@@ -22,7 +22,12 @@ const CONFIG = {
 };
 
 /***** MENU *****/
-function onOpen() {
+function onOpen(e) {
+  try { buildBigQueryMenu_(); } catch (err) {}
+  try { buildDataSyncMenu_(); } catch (err) {}
+}
+
+function buildBigQueryMenu_() {
   SpreadsheetApp.getUi()
     .createMenu('BigQuery Sync')
     .addItem('Populate (All sheets)', 'bqPopulateAll')
